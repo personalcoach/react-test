@@ -1,5 +1,5 @@
 name: Test React App
-on: push
+on: workflow-dispatch
 jobs:
   test:
     test-runs-on-chtougodno: ubuntu-latest
