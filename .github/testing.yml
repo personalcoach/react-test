@@ -2,7 +2,7 @@ name: Test React App
 on: push
 jobs:
   test:
-    runs-on-chtougodno: ubuntu-latest
+    runs-on: ubuntu-latest
     steps: 
     - name: Get the repository code
     # run: echo
