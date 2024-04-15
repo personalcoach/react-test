@@ -11,16 +11,40 @@ jobs:
       - name: Test Application
         run: npm run test
   lint: 
+    name: Lint
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+  # Replace pull_request with pull_request_target if you
+  # plan to use this action with forks, see the Limitations section
+  pull_request:
+    branches:
+      - main
+
+# Down scope as necessary via https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
+permissions:
+  checks: write
+  contents: write
+
+jobs:
+  run-linters:
+    name: Run linters
     runs-on: ubuntu-latest
+
     steps:
-        - name: Get Repository code
-          uses: actions/checkout@v4
-        - name: Install Lint
-          run: npm install lint
-        - name: Install dependecies
-          run: npm ci
-        - name: Lint Application
-          run: npm run lint
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      # Install your linters here
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          # Enable your linters here
   build: 
     runs-on: ubuntu-latest
     steps:
