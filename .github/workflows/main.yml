@@ -11,7 +11,7 @@ jobs:
       - name: Test Application
         run: npm run test
       - name: Install Lint
-        run: npm install lint
+        run: npm install --save-dev eslint-config-react-app eslint
       - name: Lint Application
         run: npm run lint
       - name: Build Application
