@@ -1,7 +1,7 @@
 name: Deploy React App
 on: push
 jobs: 
-  test:
+  deply:
     runs-on: ubuntu-latest
     steps:
       - name: Get Repository code
@@ -12,26 +12,9 @@ jobs:
         run: npm run test
       - name: Install Lint
         run: npm install lint
-  lint:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-        - name: Get Repository code
-          uses: actions/checkout@v4
-        - name: Install dependecies
-          run: npm ci
-        - name: Test Application
-          run: npm run test
-    
-  build: 
-    runs-on: ubuntu-latest
-    needs: lint
-    steps:
-        - name: Get Repository code
-          uses: actions/checkout@v4
-        - name: Install dependecies
-          run: npm ci
-        - name: Test Application
-          run: npm run test
-        - name: Deploy
-          run: echo Deploying...
+      - name: Lint Application
+        run: npm run lint
+      - name: Build Application
+        run: npm run build
+      - name: Deploy
+        run: echo Deploying...
