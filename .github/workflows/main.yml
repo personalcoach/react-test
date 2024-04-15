@@ -10,6 +10,7 @@ jobs:
         run: npm ci
       - name: Test Application
         run: npm run test
+      - name: install lint
         run: npm install lint
   lint: 
     runs-on: ubuntu-latest
