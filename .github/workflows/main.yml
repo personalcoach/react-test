@@ -10,6 +10,19 @@ jobs:
         run: npm ci
       - name: Test Application
         run: npm run test
+      - name: Install Lint
+        run: npm install lint
+  lint:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+        - name: Get Repository code
+          uses: actions/checkout@v4
+        - name: Install dependecies
+          run: npm ci
+        - name: Test Application
+          run: npm run test
+    
   build: 
     runs-on: ubuntu-latest
     steps:
